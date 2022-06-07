@@ -32,8 +32,8 @@ for (const displayable of displayables) {
   displayable.addEventListener("click", () => {
     let length = equation.length;
     if (
-      ["*", "/", "+", "-"].includes(displayable.innerText) &&
-      ["*", "/", "+", "-"].includes(equation[length - 1])
+      ["*", "/", "+", "-", "."].includes(displayable.innerText) &&
+      ["*", "/", "+", "-", "."].includes(equation[length - 1])
     ) {
       equation = equation.slice(0, -1);
     }
@@ -83,18 +83,18 @@ equalButton.addEventListener("click", () => {
   let numbers = equation
     .split(/[\+\-\*\/]/)
     .map((number) => {
-      return parseInt(number);
+      return parseFloat(number);
     })
     .filter((number) => {
       return !isNaN(number);
     });
 
-  let operators = equation.split(/\d+/).filter((operator) => {
-    return operator !== "";
+  let operators = equation.split(/\d*\.?\d*/).filter((operator) => {
+    return operator !== "" && operator.length == 1;
   });
-
+  console.log(numbers, operators);
   if (numbers.length - 1 != operators.length) {
-    outcome = "Too many operators!";
+    outcome = "Invalid equation!";
   } else {
     outcome = calculate(numbers, operators);
   }

@@ -1,5 +1,6 @@
 let equation = "";
 let display = document.querySelector(".equation");
+let displayResult = document.querySelector(".outcome");
 function add(numA, numB) {
   return numA + numB;
 }
@@ -43,6 +44,9 @@ for (const displayable of displayables) {
 }
 
 function calculate(numbers, operators) {
+  if (numbers.length === 1) {
+    return numbers[0];
+  }
   let operator = "";
   let numA = "";
   let numB = "";
@@ -55,14 +59,15 @@ function calculate(numbers, operators) {
     numA = numbers[priorityIndex];
     numB = numbers[priorityIndex + 1];
   } else {
-    operator = operators[0];
-    numA = parseInt(numbers[0]);
-    numB = parseInt(numbers[1]);
+    priorityIndex = 0;
+    operator = operators[priorityIndex];
+    numA = numbers[priorityIndex];
+    numB = numbers[priorityIndex + 1];
   }
-  console.log(numbers);
-  console.log(operators);
-  console.log(operator);
-  console.log(numA, numB);
+  let result = operate(operator, numA, numB);
+  numbers.splice(priorityIndex, 2, result);
+  operators.splice(priorityIndex, 1);
+  return calculate(numbers, operators);
 }
 
 let equalButton = document.querySelector("#equal");
@@ -73,5 +78,6 @@ equalButton.addEventListener("click", () => {
   let operators = equation.split(/\d+/).filter((operator) => {
     return operator !== "";
   });
-  calculate(numbers, operators);
+  let outcome = calculate(numbers, operators);
+  displayResult.innerText = outcome;
 });

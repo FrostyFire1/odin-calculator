@@ -6,6 +6,7 @@ body {
 }
 .display {
   display: flex;
+  flex-direction: column;
   background-color: lightgreen;
   font-size: 25px;
   font-weight: bold;
@@ -13,8 +14,10 @@ body {
   height: 70px;
 }
 .outcome {
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 600;
+  align-self: flex-end;
+  margin-right: 10%;
 }
 #calculator {
   display: flex;

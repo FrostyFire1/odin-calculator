@@ -97,3 +97,10 @@ equalButton.addEventListener("click", () => {
   }
   displayResult.innerText = outcome;
 });
+
+let clearButton = document.querySelector("#ac");
+clearButton.addEventListener("click", () => {
+  equation = "";
+  display.innerText = "";
+  displayResult.innerText = "";
+});

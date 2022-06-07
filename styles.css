@@ -3,6 +3,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgb(11, 0, 109);
 }
 .display {
   display: flex;
@@ -19,6 +20,11 @@ body {
   align-self: flex-end;
   margin-right: 10%;
 }
+
+.operator {
+  color: red;
+}
+
 #calculator {
   display: flex;
   flex-direction: column;
@@ -49,6 +55,8 @@ body {
 
 button {
   font-size: 30px;
+  background-color: black;
+  color: white;
 }
 
 #ac {

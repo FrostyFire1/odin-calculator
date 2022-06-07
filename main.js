@@ -29,7 +29,15 @@ function operate(operator, numA, numB) {
 let displayables = document.querySelectorAll(".displayable");
 for (const displayable of displayables) {
   displayable.addEventListener("click", () => {
+    let length = equation.length;
+    if (
+      ["*", "/", "+", "-"].includes(displayable.innerText) &&
+      ["*", "/", "+", "-"].includes(equation[length - 1])
+    ) {
+      equation = equation.slice(0, -1);
+    }
     equation += displayable.innerText;
+
     display.innerText = equation;
   });
 }

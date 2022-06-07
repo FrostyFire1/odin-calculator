@@ -1,3 +1,5 @@
+let equation = "";
+let display = document.querySelector(".display");
 function add(numA, numB) {
   return numA + numB;
 }
@@ -22,4 +24,12 @@ function operate(operator, numA, numB) {
     case "/":
       return divide(numA, numB);
   }
+}
+
+let displayables = document.querySelectorAll(".displayable");
+for (const displayable of displayables) {
+  displayable.addEventListener("click", () => {
+    equation += displayable.innerText;
+    display.innerText = equation;
+  });
 }

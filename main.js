@@ -41,3 +41,37 @@ for (const displayable of displayables) {
     display.innerText = equation;
   });
 }
+
+function calculate(numbers, operators) {
+  let operator = "";
+  let numA = "";
+  let numB = "";
+
+  let priorityIndex = operators.findIndex((op) => {
+    return op == "*" || op == "/";
+  });
+  if (priorityIndex !== -1) {
+    operator = operators[priorityIndex];
+    numA = numbers[priorityIndex];
+    numB = numbers[priorityIndex + 1];
+  } else {
+    operator = operators[0];
+    numA = parseInt(numbers[0]);
+    numB = parseInt(numbers[1]);
+  }
+  console.log(numbers);
+  console.log(operators);
+  console.log(operator);
+  console.log(numA, numB);
+}
+
+let equalButton = document.querySelector("#equal");
+equalButton.addEventListener("click", () => {
+  let numbers = equation.split(/[\+\-\*\/]/).map((number) => {
+    return parseInt(number);
+  });
+  let operators = equation.split(/\d+/).filter((operator) => {
+    return operator !== "";
+  });
+  calculate(numbers, operators);
+});

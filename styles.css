@@ -1,9 +1,17 @@
 body {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
+.display {
+  background-color: lightgreen;
+  width: 300px;
+  height: 70px;
+}
 #calculator {
   display: flex;
+  flex-direction: column;
 }
 #numbers {
   display: flex;
@@ -16,4 +24,30 @@ body {
 .side {
   display: flex;
   flex-direction: column;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+}
+.item {
+  flex: 2;
+}
+#zero {
+  flex: 6;
+}
+
+button {
+  font-size: 30px;
+}
+
+#ac {
+  flex: 6;
+}
+#div,
+#mul,
+#sub,
+#add,
+#equal {
+  flex: 1;
 }

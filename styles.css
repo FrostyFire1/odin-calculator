@@ -1,0 +1,19 @@
+body {
+  display: flex;
+}
+
+#calculator {
+  display: flex;
+}
+#numbers {
+  display: flex;
+  flex-direction: column;
+}
+
+.digits {
+  display: flex;
+}
+.side {
+  display: flex;
+  flex-direction: column;
+}

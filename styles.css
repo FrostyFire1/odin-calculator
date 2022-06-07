@@ -5,9 +5,16 @@ body {
   align-items: center;
 }
 .display {
+  display: flex;
   background-color: lightgreen;
+  font-size: 25px;
+  font-weight: bold;
   width: 300px;
   height: 70px;
+}
+.outcome {
+  font-size: 15px;
+  font-weight: 600;
 }
 #calculator {
   display: flex;

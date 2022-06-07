@@ -1,5 +1,5 @@
 let equation = "";
-let display = document.querySelector(".display");
+let display = document.querySelector(".equation");
 function add(numA, numB) {
   return numA + numB;
 }

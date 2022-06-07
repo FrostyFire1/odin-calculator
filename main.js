@@ -68,6 +68,9 @@ function calculate(numbers, operators) {
     numA = numbers[priorityIndex];
     numB = numbers[priorityIndex + 1];
   }
+  if (operator == "/" && numB == 0) {
+    return "Are you really that dumb?";
+  }
   let result = operate(operator, numA, numB);
   numbers.splice(priorityIndex, 2, result);
   operators.splice(priorityIndex, 1);

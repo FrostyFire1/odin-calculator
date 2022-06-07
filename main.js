@@ -43,9 +43,13 @@ for (const displayable of displayables) {
   });
 }
 
+function roundDecimal(num, decimals) {
+  return Number(Math.round(num + "e" + decimals) + "e-" + decimals);
+}
+
 function calculate(numbers, operators) {
   if (numbers.length === 1) {
-    return numbers[0];
+    return roundDecimal(numbers[0], 4);
   }
   let operator = "";
   let numA = "";
@@ -72,12 +76,24 @@ function calculate(numbers, operators) {
 
 let equalButton = document.querySelector("#equal");
 equalButton.addEventListener("click", () => {
-  let numbers = equation.split(/[\+\-\*\/]/).map((number) => {
-    return parseInt(number);
-  });
+  let outcome = "";
+  let numbers = equation
+    .split(/[\+\-\*\/]/)
+    .map((number) => {
+      return parseInt(number);
+    })
+    .filter((number) => {
+      return !isNaN(number);
+    });
+
   let operators = equation.split(/\d+/).filter((operator) => {
     return operator !== "";
   });
-  let outcome = calculate(numbers, operators);
+
+  if (numbers.length - 1 != operators.length) {
+    outcome = "Too many operators!";
+  } else {
+    outcome = calculate(numbers, operators);
+  }
   displayResult.innerText = outcome;
 });
